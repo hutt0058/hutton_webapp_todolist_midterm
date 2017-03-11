@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <!-- BOOTSTRAP AND CSS SYNC -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> </head>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<body ng-app="todo" ng-controller="todoCTRL">
+    <div class="row">
+        <div id="border" class="col-xs-4 col-xs-offset-2 ">
+            <div class="text-center">
+                <h1>Get This Done! <span class="glyphicon glyphicon-th-list"></span></h1>
+                </div>
+            <div class="listTodo">
+                <form ng-submit="add()">
+                    <!--------------------------------------------
+                                       FORM
+                    --------------------------------------------->
+                    <input class="plusTask col-xs-11" ng-model="plusTask.header" type="text" placeholder="Add New Tasks">
+
+                    <input class="plusDate col-xs-5" ng-model="plusTask.date" type="date" placeholder="Date completed (mm/dd/yy)">
+                    <!--------------------------------------------
+                                  ADD BUTTON
+                 --------------------------------------------->
+                    <button class="glyphicon glyphicon-plus-sign addBtn">Add</button>
+                </form>
+                <!--------------------------------------------
+                                      LIST ITEM
+                    --------------------------------------------->
+                <div class="">
+                    <ul class="list row"  >
+                       <h4>Needs to be done:</h4>
+                      
+                        <!------ LIST STARTS HERE ------>
+                        <li ng-repeat="task in tasks | filter:{finished:false} track by task.id" >
+                            <span class="listItem" ng-switch="task.isEditing">
+                                <input ng-model="task.finished" type="checkbox" class="checkbox" id="checkItem" ng-change="save()">
+                                
+                            <!-------------- WHILE EDITING --------------->
+                             <span ng-switch-when="true">
+            
+                              <input type="text" ng-model="task.header">
+                              <input type="date" ng-model="task.date">
+                                <button class="glyphicon glyphicon-save editBtn"
+                                  ng-click="task.isEditing = false; save()"></button>
+                              </span>
+                            
+                            <!------ DEFAULT RESULT BEFORE EDITING------->
+                            <span ng-switch-default>
+                             
+                              <span type="text">{{task.header}}</span>
+                              <span type="date">{{task.date | date}}</span>
+                              
+                              <button class="glyphicon glyphicon-pencil editBtn"
+                                  ng-click="task.isEditing = true"></button>
+   
+                            </span>
+                            
+                            <!----------- DELETE BUTTON -------------------->
+                            <button ng-click="delete(task)" class="glyphicon glyphicon-trash deleteBtn"></button>
+                            
+                          </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        
+        <!----------------- COMPLETED LIST --------------------->
+        
+        <div id="border" class="col-xs-4 col-xs-offset-1 ">
+         <div class="text-center">
+            <h4>Finished Tasks: <span class="glyphicon glyphicon-ok"></span></h4>
+          </div>
+             <div class="listTodo">
+               <ul>
+                 <li ng-repeat="task in tasks | filter:{finished:true} track by task.id">
+                    <span class="listFinished">
+                        <input ng-model="task.finished" type="checkbox" class="checkbox" id="checkItem" ng-change="save()">
+                               
+                           <span type="text" class="done" ng-model="task.header">{{task.header}}</span>
+                            <span type="date" class="done" ng-model="task.date">{{task.date | date}}</span>
+                                    
+                          <button ng-click="delete(task)" class="glyphicon glyphicon-trash deleteBtn"></button>
+                      </span>
+                   </li>
+                </ul> 
+              </div>
+          </div>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+</body>
+
+</html>

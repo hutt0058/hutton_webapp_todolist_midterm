@@ -1,0 +1,141 @@
+
+html{
+    min-height: 100%;
+}
+body {
+  margin: 20px;
+  color: #435757;
+  background: linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%);
+  font: 500 1.2em/1.2 'Roboto', sans-serif;
+ 
+}
+
+
+#border{
+    border-radius: 15px 50px;
+    background-color: white;
+    padding: 10px;
+}
+h1{
+    background-color:#a0cecf;
+    padding: 40px;
+    margin: 0;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 9px 50px;
+    
+}
+
+h4{
+    background-color:#a0cecf;
+    width: 70%;
+    padding: 20px;
+    margin: 0;
+    margin-top: 20px;
+    color: white;
+    text-align: left;
+    border-radius: 9px 50px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+li{
+    list-style: none;
+}
+.listTodo{
+    background-color: white;
+}
+
+.listFinished{
+    padding: 20px;
+    font-size: 16px;
+    width:100%;
+    margin-left: 0;
+}
+input{
+    margin: 20px;
+    border:none;
+    border-bottom: 2px solid #FFCD65;
+    font-size: 18px;
+    
+}
+
+.plusTask{
+    font-size: 24px;
+}
+
+input:focus{
+    outline:none;
+}
+
+
+
+/************************ 
+ ****** BUTTONS ******
+************************/
+.addBtn, .deleteBtn, .editBtn{
+    border: none;
+    border-radius: 15px 50px;
+    background-color: #FFCD65 ;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: white;
+    
+}
+ 
+.completedTask{
+    border: none;
+    background-color:#FFCD65;
+    width:30px;
+    padding: 5px;
+    margin-left: 80px;
+    margin-top: -6px;
+}
+
+.done{
+ text-decoration: line-through;
+}
+/************************ 
+ ***** List Items *****
+************************/
+
+.list{
+    padding: 20px;
+    font-size: 16px;
+    width:100%;
+    margin-left: 0;
+}
+
+.list .checkbox{
+    float: left;
+    margin-right:20px; 
+    
+    
+}
+
+.list:nth-child(odd){
+    
+}
+
+.list:nth-child(even){
+    
+   
+}
+
+.listItem .taskObject{
+    font-weight: 600;
+}
+
+.listItem .taskScript{
+    
+}
+
+.listItem .taskDate{
+}
+
+.selectItem{
+    color: gray;
+}
